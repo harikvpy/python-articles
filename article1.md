@@ -1,4 +1,5 @@
 # Python Generators - A Look Inside
+<cite>Hari Mahadevan, hari@smallpearl.com</cite>
 
 ## Background
 One of the most powerful features of Python is its `generator functions`. It also happens to be a feature that leads to confusion among its users; it can seem quite mysterious as to how generators do their magic. A decent understanding of how generators work inside the Python interpreter can be quite helpful in unraveling this mystery and should go some way in helping you write better code.
