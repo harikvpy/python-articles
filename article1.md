@@ -35,9 +35,9 @@ All functions in Python will have a corresponding frame object. Initialization i
   - execution pointer
   - variables, local & global
 
-You can imagine this as a C struct which a few appropriately named members for each of the above(and more). The `inspect` module documents this [here](https://docs.python.org/3/library/inspect.html#types-and-members).
+You can imagine this as a C struct with a few appropriately named members for each of the above(and more). The `inspect` module documents this [here](https://docs.python.org/3/library/inspect.html#types-and-members).
 
-When a function is initialzied, a corresponding frame object is created. Arguments to the function are passed as `frame.f_local[arg1]`, `frame.f_locals['arg2']`, etc. As the function is executed, the instruction pointer to the function's bytecode, is advanced via the `frame.f_lasti` member.
+When a function is initialized, a corresponding frame object is created. Arguments to the function are passed as `frame.f_local[arg1]`, `frame.f_locals['arg2']`, etc. As the function is executed, the instruction pointer to the function's bytecode is advanced via the `frame.f_lasti` member.
 
 
 ### Evaluation
@@ -90,7 +90,7 @@ What's going on here is that every time we call `next(a)`, it calls `PyEval_Eval
 The above cycle repeats until the generator function decides that it has reached its end of the yield iteration logic and returns. When this happens, `next()` generates a `StopIteration` exception. At this point the `gi_frame` held by the generator object can safely be destroyed.
 
 ## Generators in a for loop
-In real world we hardly use generator functions using the `next()` builtin. Instead we would iterator through the generator using a for loop. The for loop is actually a syntatic sugar on top of the `next()` and `StopIteration` exception, that presents a coding style similar to the traditional loop to the user. That is the for loop iterates through the generator's yielded values until `next()` throws a `StopIteration` exception.
+In the real world we hardly use generator functions using the `next()` builtin. Instead we would iterate through the generator using a for loop. The for loop is actually a syntactic sugar on top of the `next()` and `StopIteration` exception, that presents a coding style similar to the traditional loop to the user. That is the for loop iterates through the generator's yielded values until `next()` throws a `StopIteration` exception.
 
 
 ## Communicating with generators
@@ -108,6 +108,6 @@ From an implementation point of view, `send()` pushes its argument to the top of
 ## Conclusion
 I hope the above discussion gives you a better idea of how Python generators are implemented by the interpreter that leads to its magic of continuously yielding values without having to complete its processing and store the result in a temporary local variable.
 
-You can percieve a generator function as a closure as it preserves the function's exceution pointer and its state, allowing it to be resumed. Come to think of it, this behavior is quite similar to threads in a multi-threaded environment. That is a *threading* system that doesn't require any support from the host CPU or the operating system. Of course one critical difference is that in a true multi-threaded system, threads are pre-emptively scheduled in and out. That doesn't happen here. Instead the *threads* (read, generator functions) have to yield control back to the callee for the function context switch to occur. This essentially is the behavior of a *co-operative multi-tasking* system. I'm not sure if anyone can remember this term -- remember Windows 3.x?!
+You can perceive a generator function as a closure as it preserves the function's execution pointer and its state, allowing it to be resumed. Come to think of it, this behavior is quite similar to threads in a multi-threaded environment. That is a *threading* system that doesn't require any support from the host CPU or the operating system. Of course one critical difference is that in a true multi-threaded system, threads are pre-emptively scheduled in and out. That doesn't happen here. Instead the *threads* (read, generator functions) have to yield control back to the callee for the function context switch to occur. This essentially is the behavior of a *cooperative multitasking* system. I'm not sure if anyone can remember this term -- remember Windows 3.x?!
 
 This framework, of stopping & resuming functions is quite critical to implementing another powerful feature of the language. A feature that has become quite useful in achieving massive scaleability in this network-centric world. I'm talking about asynchronous programming, provided by the Python package `asyncio`. I hope to cover that in a follow-up article, contents of which will be easier to understand if you have a good grasp of the mechanisms discussed here.
