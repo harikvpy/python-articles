@@ -23,7 +23,7 @@ for i in my_range(0, 10):
 Nothing fancy about the code. It's just a limited implementation of Python’s standard function `range()`. A code example that has been extensively used in many Python books & articles. The magic happens when the interpreter encounters the keyword `yield`. During bytecode generation, this keyword tells the interpreter that the enclosing function is a generator function and it goes on to treat the function a little differently from a regular function. And this different treatment is what makes generator functions achieve its magic and it's this that is the topic of this article.
 
 ## Python Functions
-Before we dig into the details of generators, it's necessary to have a basic understanding of how the Python interpreter executes the source code that we provide it. Specifically its functions.
+Before we dig into the details of generators, it's necessary to have a basic understanding of how the Python interpreter executes the source code that we provide. Specifically its functions.
 
 A function in Python's interpreter has two distinct phases -- initialization and evaluation.
 
@@ -110,4 +110,4 @@ I hope the above discussion gives you a better idea of how Python generators are
 
 You can perceive a generator function as a closure as it preserves the function's execution pointer and its state, allowing it to be resumed. Come to think of it, this behavior is quite similar to threads in a multi-threaded environment. That is a *threading* system that doesn't require any support from the host CPU or the operating system. Of course one critical difference is that in a true multi-threaded system, threads are pre-emptively scheduled in and out. That doesn't happen here. Instead the *threads* (read, generator functions) have to yield control back to the callee for the function context switch to occur. This essentially is the behavior of a *cooperative multitasking* system. I'm not sure if anyone can remember this term -- remember Windows 3.x?!
 
-This framework, of stopping & resuming functions is quite critical to implementing another powerful feature of the language. A feature that has become quite useful in achieving massive scaleability in this network-centric world. I'm talking about asynchronous programming, provided by the Python package `asyncio`. I hope to cover that in a follow-up article, contents of which will be easier to understand if you have a good grasp of the mechanisms discussed here.
+This framework of stopping & resuming functions is quite critical to implementing another powerful feature of the language. A feature that has become quite useful in achieving massive scalability in this network-centric world. I'm talking about asynchronous programming, provided by the Python package `asyncio`. I hope to cover that in a follow-up article, contents of which will be easier to understand if you have a good grasp of the concepts discussed here.
