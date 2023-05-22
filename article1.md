@@ -1,5 +1,5 @@
 # Python Generators - A Look Inside
-<cite>Hari Mahadevan, hari@smallpearl.com</cite>
+<cite>Hariharan Mahadevan(何瑞理), hari@smallpearl.com</cite>
 
 ## Background
 One of the most powerful features of Python is its *generator functions*. It also happens to be a feature that leads to confusion among its users; it can seem quite mysterious as to how generators do their magic. A decent understanding of how generators work inside the Python interpreter can be quite helpful in unraveling this mystery and should go some way in helping you write better code.
@@ -109,3 +109,5 @@ I hope the above discussion gives you a better idea of how Python generators are
 You can perceive a generator function as a closure as it preserves the function's execution pointer and its state, allowing it to be resumed. Come to think of it, this behavior is quite similar to threads in a multi-threaded environment. That is a *threading* system that doesn't require any support from the host CPU or the operating system. Of course one critical difference is that in a true multi-threaded system, threads are pre-emptively scheduled in and out. That doesn't happen here. Instead the *threads* (read, generator functions) have to yield control back to the callee for the function context switch to occur. This essentially is the behavior of a *cooperative multitasking* system. I'm not sure if anyone can remember this term -- remember Windows 3.x?!
 
 This framework of stopping & resuming functions is quite critical to implementing another powerful feature of the language. A feature that has become quite useful in achieving massive scalability in this network-centric world. I'm talking about asynchronous programming, provided by the Python package *asyncio*. I hope to cover that in a follow-up article, contents of which will be easier to understand if you have a good grasp of the concepts discussed here.
+
+*<small>Hariharan is a software developer turned entrepreneur running his own software development business in Taiwan. He has over 30 years of hands-on development experience in domains ranging from device drivers to cloud based applications and still enjoys coding.</small>*
