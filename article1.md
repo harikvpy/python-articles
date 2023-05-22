@@ -110,4 +110,4 @@ You can perceive a generator function as a closure as it preserves the function'
 
 This framework of stopping & resuming functions is quite critical to implementing another powerful feature of the language. A feature that has become quite useful in achieving massive scalability in this network-centric world. I'm talking about asynchronous programming, provided by the Python package *asyncio*. I hope to cover that in a follow-up article, contents of which will be easier to understand if you have a good grasp of the concepts discussed here.
 
-*<small>Hariharan is a software developer turned entrepreneur running his own software development business in Taiwan. He has over 30 years of hands-on development experience in domains ranging from device drivers to cloud based applications and still enjoys coding.</small>*
+*<small>Hariharan is a software developer turned entrepreneur running his own software business in Taiwan. He has over 30 years of hands-on development experience in domains ranging from device drivers to cloud based applications and still enjoys coding.</small>*
