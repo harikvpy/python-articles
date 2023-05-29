@@ -13,7 +13,7 @@ My approach is going to be a little bit different. First I want to start with a 
 In a subsequent lesson we will link the async constructs with what we learned in the Python Generators article and see how the former was adapted to implement the latter. And if necessary we'll cover the syntax, but hopefully with a different viewpoint than the many articles already existing on the web.
 
 ## Example
-Like I mentioned, async programming can be frustratingly difficult to understand at first. So before we go into the dry discussion of its syntax, let's start with some code. Code that you can copy-paste into an editor and run yourself.
+Like I mentioned, async programming can be frustratingly difficult to understand at first. So before we go into the dry discussion of its syntax, let's start with some code. Code that you can copy-paste into an editor and run yourself. You don't to understand the code yet. Purpose of this code is to establish the differences between multithreaded and async programming. We'll not be discussing the code or the concepts therein in this article.
 
 The code below implements a TCP/IP echo server that will echo back the text written to it, but after converting it to upper case. There are two implementations, one traditional thread based server and another an async programming based single-threaded server.
 
