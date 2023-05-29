@@ -28,7 +28,7 @@ class MyServer(threading.Thread):
     '''Start a TCP/IP server at <host>:<port>'''
     def __init__(self, host: str, port: int, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self._tcp_server = socketserver.TCPServer((host, port), MyTCPHandler)
+        self._tcp_server = socketserver.ThreadingTCPServer((host, port), MyTCPHandler)  # noqa
 
     def stop(self):
         self._tcp_server.shutdown()

@@ -56,7 +56,7 @@ async def run_clients(count: int, address: str, port: int):
 
 
 if __name__ == "__main__":
-    iter = 100
+    iter = 1000
     if len(sys.argv) < 3:
         print("Usage: client <address> <port> [<iterations>]\n")
         sys.exit(1)
