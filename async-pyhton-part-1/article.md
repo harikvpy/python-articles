@@ -21,7 +21,7 @@ Then we implement a client that will exercise this echo server. Since the server
 
 ### Thread based server
 
-```python=
+```python showLineNumbers
 #!/usr/bin/env python
 # threaded_server.py
 import socketserver
@@ -81,7 +81,7 @@ The code above is adapted from the sample in the official doc [here](https://doc
 
 
 ### Async server
-```
+```python showLineNumbers
 #!/usr/bin/env python
 # async_server.py; use Python v3.7+
 import asyncio
@@ -132,7 +132,7 @@ Like *threaded_server.py*, *async_server.py* is also based on the code from the 
 ### Client
 Now that we have two identical servers, one threaded and another async, we need to write our client. Since we're going to compare the behavior of these two servers, to make a fair comparison, we need to use the same client. Without going too much into the details, here is the code.
 
-```
+```python showLineNumbers
 #!/usr/bin/env python
 # client.py; use Python 3.9+
 from typing import Tuple, Any
