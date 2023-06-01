@@ -268,6 +268,23 @@ We can apply the above concept to explain our example above. As each request com
 
 The last two paragraphs is essentially the crux of asynchronous programming. You can visualize it as a conceptual queue of tasks with one person (the *loop*) assigned to take each one out of the top of it and attend to it. The tasks themselves tell the loop which of its operations could take a long time to complete. When the loop encounters these operations, it starts the operation and and puts the task back in the queue. This process repeats until the person is asked to stop serving the task queue.
 
+## Real-world analogy
+We can use a real-world analogy to explain this. Imagine being at home and doing the following:
+
+```
+------------------- time ----------------------->
+Start the washing machine with dirty clothes
+    Put kettle on the stove for tea
+        Put two slices of bread in the toaster
+            Kettle siren goes off
+            Make tea
+                Toaster goes pop
+                Spread peanut butter on the toast and have it with tea
+                    Washing machine goes 'beep beep'
+                        Hang the clothes and while sipping tea and having your toast.
+```
+This is essentially what happens in async. You're doing many things concurrently and *seemingly* parallelly.
+
 ## Client
 An observant reader might have noticed that the client code uses asyncio. Why? This implementation detail merits a brief explanation.
 
