@@ -2,7 +2,7 @@
 <cite>Hariharan Mahadevan(何瑞理), hari@smallpearl.com</cite>
 
 ## Introduction
-In the previous article on [Python Generators](http://www.google.com/) we saw how generator functions are essentially objects that represent the function, execution of which can be suspended and resumed. The resumption of the function happens when it has new values to *emit* to the caller, which it does via the *yield* statement. With this background knowledge, in this (and quite likely a few) article we will start examining asynchronous programming in python.
+In the previous article on [Python Generators](https://lsl.sinica.edu.tw/Blog/2023/05/python-generators-a-look-inside/) we saw how generator functions are essentially objects that represent the function, execution of which can be suspended and resumed. The resumption of the function happens when it has new values to *emit* to the caller, which it does via the *yield* statement. With this background knowledge, in this (and quite likely a few) article we will start examining asynchronous programming in python.
 
 Asynchronous programming is not an easy concept to grasp. Quite frankly it can be frustrating at times and in my experience, it is one of those subjects that requires repeated attempts to get your thinking in tune with the way the paradigm works. This is because our brain is inherently trained to think sequentially connecting information that occurs in a time series to form the complete picture. Asynchronous programming does not work like that. Computing occurs asynchronously, emitting results as and when they are available in an unpredictable sequence.
 
