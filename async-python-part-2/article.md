@@ -28,7 +28,7 @@ def task2():
   pass
 ```
 
-If we were to run these, it would look like this(horizontal axis represents CPU execution time). That is, when `task1` completes, `task2` gets going. And if you have `task3`, `task4`, etc, they all follow the task prior to each.
+If we were to run these, it would look like this(horizontal axis represents CPU execution time). That is, when <i>task1</i> completes, <i>task2</i> gets going. And if you have <i>task3</i>, <i>task4</i>, etc, they all follow the task prior to each.
 
 
 ```
