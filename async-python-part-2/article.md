@@ -90,7 +90,7 @@ What if this housekeeping is provided by the language framework itself?
 
 Well that's what Python async provides you. As we saw in a [previous](https://lsl.sinica.edu.tw/Blog/2023/05/python-generators-a-look-inside/) article, it turns Python language provides just the right infrastructure for this -- the generators framework! To recap, generators are functions (function objects, rather) that can suspend their execution to provide a result to its caller and then resume from where it suspended when asked to do so. Sounds like our concurrent system's requirement, doesn't it?
 
-This generator framework, together with the new keywords, `async` & `await` and a scheduler to manage various async tasks and schedule them based on some rules, provide the developers with a neat framework to build efficient & scalable algorithms that better make use of the processor resources.
+This generator framework, together with the new keywords, <i>async</i> & <i>await</i> and a scheduler to manage various async tasks and schedule them based on some rules, provide the developers with a neat framework to build efficient & scalable algorithms that better make use of the processor resources.
 
 ## Our own concurrency framework
 As a last step to deepen our understanding of how generators and async programs are related, let us try and implement a simple concurrent framework ourselves. Note that is an oversimplified version and it's purpose is purely educational.
@@ -173,9 +173,9 @@ if __name__ == '__main__':
 
 What we have done is create a few generator functions, each of which <i>yields</i> a value after sleeping a random interval. The sleep is not relevant and is there to simulate a time consuming IO intensive background operation. Also, the sleep slows down the print messages, which helps us track and visualize the program's run progress much better.
 
-Then, we created a class `MyConcurrentRunner`, which allows generators to be queued to it. Thereafter when its `run()` method is invoked, we execute the queued generators in a round-robin fashion by calling the built in `next()` with the generator popped from the queue.
+Then, we created a class <i>MyConcurrentRunner</i>, which allows generators to be queued to it. Thereafter when its <i>run()</i> method is invoked, we execute the queued generators in a round-robin fashion by calling the built in <i>next()</i> with the generator popped from the queue.
 
-While this is greatly oversimplified, Python's async framework works in a similar manner. The `MyConcurrentRunner` here is the event loop in async Python and the generator functions that we created are the `async` functions that we write. While here we explicitly queue the generators to our `MyConcurrentRunner` instance, in async Python, this happens implicitly when we <i>await</i> on an an async routine by calling it using the `await func()` syntax.
+While this is greatly oversimplified, Python's async framework works in a similar manner. The <i>MyConcurrentRunner</i> here is the event loop in async Python and the generator functions that we created are the <i>async</i> functions that we write. While here we explicitly queue the generators to our <i>MyConcurrentRunner</i> instance, in async Python, this happens implicitly when we <i>await</i> on an an async routine by calling it using the <i>await func()</i> syntax.
 
 Of course Python's event loop is way more complex. It allows other types of async routines such as timer routines to be queued up, which when they expire the eventloop scheduler calls. The queued up routines are also scheduled in a more first-to-finish-first-served manner than our fixed order of queuing up.
 
@@ -188,13 +188,13 @@ $ man select
 $ man poll
 ```
 
-Man pages for both these functions describe them as `synchronous I/O multiplexing`. Essentially these functions allow sockets to be queued up with OS so that when there's any network activity around the socket (in/out traffic or connection), it's reflected in the corresponding file descriptor returned by the function. The functions also allow you to specify a timeout value (which can be set to 0), after the elapse of which the function returns irrespective of the queued up sockets' state.
+Man pages for both these functions describe them as <i>synchronous I/O multiplexing</i>. Essentially these functions allow sockets to be queued up with OS so that when there's any network activity around the socket (in/out traffic or connection), it's reflected in the corresponding file descriptor returned by the function. The functions also allow you to specify a timeout value (which can be set to 0), after the elapse of which the function returns irrespective of the queued up sockets' state.
 
-Python `selectors` use this API and the async counterparts of socket API are implemented using the `selectors` library.
+Python <i>selectors</i> use this API and the async counterparts of socket API are implemented using the <i>selectors</i> library.
 
 
 ## Proof is in the pudding
-It might surprise you to learn that the concurrency example above is a lot closer to the async event loop implementation than you may think. Async functions are represented by a `coroutine` object, much like generators are represented by a `generator` object. And `coroutine` is a specialization of a `generator` object. The primary difference between the two is that `coroutine` can be invoked with arguments (multiple times) whereas `generator` only emits values until it runs out of values to emit.
+It might surprise you to learn that the concurrency example above is a lot closer to the async event loop implementation than you may think. Async functions are represented by a <i>coroutine</i> object, much like generators are represented by a <i>generator</i> object. And <i>coroutine</i> is a specialization of a <i>generator</i> object. The primary difference between the two is that <i>coroutine</i> can be invoked with arguments (multiple times) whereas <i>generator</i> only emits values until it runs out of values to emit.
 
 If you're still not convinced that generators form the basis for async Python, perhaps this little experiment will finally provide you the proof.
 
@@ -245,9 +245,9 @@ atask1 disassembly:-
              14 RETURN_VALUE
 ```
 
-Look at the bytecode at line 8 of both the functions. `YIELD_FROM`!
+Look at the bytecode at line 8 of both the functions. <i>YIELD_FROM</i>!
 
-The `YIELD_FROM` in `atask1` corresponds to the `await atask2()` call and is essentially retrieving values emitted by the `atask1` coroutine, which in turn is a specialized `generator` object.
+The <i>YIELD_FROM</i> in <i>atask1</i> corresponds to the <i>await atask2()</i> call and is essentially retrieving values emitted by the <i>atask1</i> coroutine, which in turn is a specialized <i>generator</i> object.
 
 ## Conclusion
 I hope this discussion helped deepen & clarify your understanding of asynchronous programming in Python and convince you of its close relationship with generators. While the content here is mostly conceptual and meant to give you an overview of how an async program is managed by the runtime, it's model is surprisingly similar to how things work in the real async event loop.
