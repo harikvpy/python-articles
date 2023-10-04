@@ -119,4 +119,6 @@ Lastly, pure JavaScript based frontends can be written in such a way that it can
 ## Conclusion
 I hope this article gave you an insight into way the web has evolved to result in what we have today. This is by no means complete and overlooks a key trend -- mechanisms for live interaction via browser. By mechanism for live interaction, I'm referring to features such as live chat and streaming. Both these features require data to be pushed by the server to the client, after the client initiates a request expressing interest in the data. If time permits, we will explore this in a little bit more detail in one of the future articles.
 
+*<small>Images sourced from the Internet with copyright held by respective creators.</small>*
+
 *<small>Hariharan is a software developer turned entrepreneur running his own [software business](https://smallpearl.com) in Taiwan. He has over 30 years of hands-on development experience in domains ranging from device drivers to cloud based applications and still enjoys coding.</small>*
