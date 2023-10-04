@@ -86,16 +86,16 @@ Together, these two key innovations suddenly made web applications interactively
 
 However AJAX & jQuery were not without their drawbacks.
 
-Server logic became increasingly complex as it now consisted of two kinds of response types. Some requests resulted in full HTML pages being returned whereas other requests returned pure data encoded as JSON (or in some rare cases XML). Of course application servers returning pure JSON data simplifies applications server code as it does not have to deal with composing messy HTML page fragments. I call it messy as HTML being a declarative language is not easy to broken down into components and maintained independently.
+Server logic became increasingly complex as it now consisted of two kinds of response types. Some requests resulted in full HTML pages being returned whereas other requests returned pure data encoded as JSON (or in some rare cases XML). Of course application servers returning pure JSON data simplifies applications server code as it does not have to deal with composing messy HTML page fragments. I call it messy as HTML being a declarative language is not easy to be broken down into components and maintained independently.
 
-At the same time client computers became more & more powerful. Power that was not being fully utilized by the browser rendering a web application. Moreover, JavaScript became an omnipresent capability in web browsers which made writing web applications that rely on it less and less risky to critical failure.
+At the same time client computers became more & more powerful. Power that was not being fully utilized by the browser rendering a web application. Also, JavaScript became an omnipresent capability in web browsers which made writing web applications that rely on it less and less risky to being rendered non-functional.
 
-What if all the work required to construct the frontend of a web application UI and manage its interaction be delegated to the client thereby restricting the server code to just managing the data and the business logic? This would simplify the server code which would help achieve even greater scalability while making maitenance that much easier. Moreover, since UI is managed entirely from the browser, it can be made even more responsive.
+What if all the work required to construct the frontend of a web application UI be delegated to the client thereby restricting the server code to just managing the data and the business logic? This would simplify the server code which would help achieve even greater scalability while making maitenance that much easier. Moreover, since UI is managed entirely from the browser, it can be made even more responsive.
 
 This line of thought resulted in the next major evolutionary phase in web frameworks.
 
 ## JavaScript Frontend Frameworks
-JavaScript based frontend frameworks render the entire HTML page locally at the browser. They do this by running JavaScript code, which is served by the server. This is the contemporary evolutionary phase that we are in right now.
+JavaScript based frontend frameworks render the entire HTML page locally at the browser. They do this by running JavaScript code, which is retrieved from the server. This is the contemporary evolutionary phase that we are in right now.
 
 Example for JavaScript based frontend frameworks are [Angular](https://angular.io/), [React](https://react.dev/) & [Vue.js](https://vuejs.org/), amongst others.
 
@@ -104,13 +104,17 @@ In these frameworks, the application server is responsible for primarily two fun
 - Provide access to the data & manipulate them through a well defined interface
 - Deliver the latest application code as JavaScript bundles
 
-The JavaScript bundles run in the browser fetching essential data from the server and building an HTML user interface for the user. This HTML is then injected into the browser window resulting in the application UI and allows the user to interact with the app. When user invokes an application feature or triggers an action (like clicking a button or a link or entering a value into a text field), the relevant code goes on to build a new interface (or modifies the existing UI) by composing new HTML fragments and injecting them into the browser's view. This process goes on endlessly until the user quits the app.
+The JavaScript bundles contain the entire application code and run in the browser fetching essential data from the server and building an HTML user interface for the user. This HTML is then injected into the browser window resulting in the application UI. When user invokes an application feature or triggers an action (like clicking a button or a link or entering a value into a text field), the relevant code goes on to build a new interface (or modifies the existing one) by composing new HTML fragments and injecting them into the browser's view. This process goes on endlessly until the user quits the app.
 
-This mechanism completely removes the logic of building the HTML response for a given request from the server. Server only has to provide a means to access the data & in cases where the data needs to be changed, validation of the inputs before changing it. Of course the server also incorporates the business logic (such as cascading effects on related data) of what happens when data is thus modified.
+This mechanism completely removes the logic of building the HTML response for a given request from the server. Server only has to provide a means to access the data & in cases where the data needs to be changed, validation of the inputs before changing it. The server also incorporates the business logic (such as cascading effects on related data) of what happens when data is thus modified.
 
-An added benefit of using JavaScript frontend frameworks is that it allows clear separation between frontend & backend code bases. This has other couple of significant consequences. One if allows development of these two to progress independently of each other as long as the interface remains the same. More importantly, this model allows organizations to hire independent developers with specialized skills suiting the domain thereby achieving higher code quality and programmer productivity. Lastly, pure JavaScript based frontends can be written in such a way that it can be converted into a mobile app with minimal effort. And such mobile apps can be deployed in both Android and iOS platforms, from a single code base again with minimal platform specific code.
+An added benefit of using JavaScript frontend frameworks is that it allows clear separation between frontend & backend code bases. This has other couple of significant consequences.
+
+Firstly, it allows development of these two to progress independently of each other as long as the interface remains the same.
+
+Secondly, this model allows organizations to hire independent developers with specialized skills suiting the domain thereby achieving higher code quality and programmer productivity.
+
+Lastly, pure JavaScript based frontends can be written in such a way that it can be converted into a mobile app with minimal effort. And such mobile apps can be deployed in both Android and iOS platforms, from a single code base with minimal additional effort to handle platform specific vagaries.
 
 ## Conclusion
 I hope this article gave you an insight into way the web has evolved to result in what we have today. This is by no means complete and overlooks a key trend -- mechanisms for live interaction via browser. By mechanism for live interaction, I'm referring to features such as live chat and streaming. Both these features require data to be pushed by the server to the client, after the client initiates a request expressing interest in the data. If time permits, we will explore this in a little bit more detail in one of the future articles.
-
-Also, how would two other key recent technological innovations that are vogue now(AI & VR) affect the web? Like in biology, it is too risky to make predictions on evolution. A smarter approach would be to sit, watch and adapt with it.
